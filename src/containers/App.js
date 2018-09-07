@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 import { Page } from '../components/Page'
 import { User } from '../components/User'
 import { getPhotos } from '../actions/PageActions'
+import { handleLogin } from '../actions/UserActions'
 
 import './App.css'
 
 class App extends Component {
 	render() {
-		const { user, page, getPhotos } = this.props
+		const { user, page, getPhotos, handleLogin } = this.props
 		return (
 			<div className="app">
 				<Page
@@ -17,7 +18,12 @@ class App extends Component {
 					year={page.year}
 					getPhotos={getPhotos}
 				/>
-				<User name={user.name} />
+				<User
+					name={user.name}
+					isFetching={user.isFetching}
+					error={user.error}
+					handleLogin={handleLogin}
+				/>
 			</div>
 		)
 	}
@@ -32,6 +38,7 @@ const mapStateToProps = store => {
 }
 const mapDispatchToProps = dispatch => ({
 	getPhotos: year => dispatch(getPhotos(year)),
+	handleLogin: () => dispatch(handleLogin()),
 })
 
 export default connect(

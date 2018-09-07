@@ -37,7 +37,7 @@ const mapStateToProps = store => {
 	}
 }
 const mapDispatchToProps = dispatch => ({
-	getPhotos: year => dispatch(getPhotos(year)),
+	getMorePhotos: year => dispatch(getPhotos(year)),
 	handleLogin: () => dispatch(handleLogin()),
 })
 

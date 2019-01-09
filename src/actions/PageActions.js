@@ -3,10 +3,12 @@ export const GET_PHOTOS_SUCCESS = 'GET_PHOTOS_SUCCESS'
 export const GET_PHOTOS_FAIL = 'GET_PHOTOS_FAIL'
 
 function makeYearPhotos(photos, selectedYear) {
+	console.log('photos::', photos)
 	let createdYear,
 		yearPhotos = []
-	photos.forEact(item => {
+	photos.forEach(item => {
 		createdYear = new Date(item.date * 1000).getFullYear()
+		console.log(`${createdYear} - ${selectedYear}`)
 		if (createdYear === selectedYear) {
 			yearPhotos.push(item)
 		}
@@ -32,6 +34,7 @@ export function getMorePhotos(offset, count, year, dispatch) {
 				} else {
 					let photos = makeYearPhotos(photosArr, year)
 					cached = true
+					console.log('fff', photos)
 					dispatch({
 						type: GET_PHOTOS_SUCCESS,
 						payload: photos,

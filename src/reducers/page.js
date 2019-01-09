@@ -4,7 +4,7 @@ import {
 	GET_PHOTOS_FAIL,
 } from '../actions/PageActions'
 const initialState = {
-	year: 2018,
+	year: 2019,
 	photos: [],
 	isFetching: false,
 	isError: false,

@@ -10,6 +10,7 @@ import './App.css'
 class App extends Component {
 	render() {
 		const { user, page, getPhotos, handleLogin } = this.props
+
 		return (
 			<div className="app">
 				<Page
@@ -17,6 +18,8 @@ class App extends Component {
 					isFetching={page.isFetching}
 					year={page.year}
 					getPhotos={getPhotos}
+					name={user.name}
+					handleLogin={handleLogin}
 				/>
 				<User
 					name={user.name}
@@ -30,14 +33,13 @@ class App extends Component {
 }
 
 const mapStateToProps = store => {
-	console.log(store)
 	return {
 		user: store.user,
 		page: store.page,
 	}
 }
 const mapDispatchToProps = dispatch => ({
-	getMorePhotos: year => dispatch(getPhotos(year)),
+	getPhotos: year => dispatch(getPhotos(year)),
 	handleLogin: () => dispatch(handleLogin()),
 })
 

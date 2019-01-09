@@ -5,7 +5,7 @@ export class User extends React.Component {
 	render() {
 		const { name, error, isFetching } = this.props
 		if (error) {
-			return <p>Во время запроса проищошла ошибка, обновите страницу</p>
+			return <p>Во время запроса произошла ошибка, обновите страницу</p>
 		}
 		if (isFetching) {
 			return <p>Загружаю...</p>
@@ -16,13 +16,9 @@ export class User extends React.Component {
 					<p>Привет, {name}</p>
 				</div>
 			)
-		} else {
-			return (
-				<button className="btn" onClick={this.props.handleLogin}>
-					Войти
-				</button>
-			)
 		}
+
+		return null
 	}
 }
 
